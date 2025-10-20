@@ -19,6 +19,8 @@
       border-bottom:4px solid #ff69b4; box-shadow:0 4px 6px rgba(0,0,0,0.1);
     }
     header h1 { font-size:2rem; color:#fff; text-shadow:2px 2px #ff69b4; }
+    header img { height:50px; margin-right:15px; }
+    .logo-container { display:flex; align-items:center; }
     nav a { margin-left:20px; font-weight:bold; color:#fff; transition: transform 0.2s; }
     nav a:hover { transform:scale(1.1); }
 
@@ -30,38 +32,79 @@
     /* Hero */
     .hero { background:#fff0f5; text-align:center; }
     .hero h2 { color:#ff69b4; margin-bottom:20px; }
-    .hero iframe { width:80%; max-width:600px; height:340px; border:none; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.2); margin-bottom:15px; }
-    .hero .visit-btn { display:inline-block; margin-top:10px; padding:10px 20px; background:#ff4081; color:#fff; font-weight:bold; border-radius:10px; }
+    .hero iframe {
+      width:80%; max-width:600px; height:340px;
+      border:none; border-radius:15px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2); margin-bottom:15px;
+    }
+    .hero .visit-btn {
+      display:inline-block; margin-top:10px; padding:10px 20px;
+      background:#ff4081; color:#fff; font-weight:bold; border-radius:10px;
+    }
 
     /* Carousel */
     .carousel { display:flex; overflow-x:auto; gap:15px; scroll-behavior:smooth; padding-bottom:10px; }
     .carousel::-webkit-scrollbar { height:8px; }
     .carousel::-webkit-scrollbar-thumb { background:#ff69b4; border-radius:4px; }
-    .card { flex:0 0 auto; background:#fff; border-radius:15px; padding:15px; width:260px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .card {
+      flex:0 0 auto; background:#fff; border-radius:15px; padding:15px;
+      width:260px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;
+    }
     .card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
     .card h3 { color:#ff4081; margin-bottom:10px; }
     .card p { color:#555; margin-bottom:10px; font-size:0.95rem; }
-    .card iframe { width:220px; height:150px; border-radius:10px; }
+    .card iframe { width:220px; height:150px; border-radius:10px; pointer-events:none; }
 
     /* About & Contact */
     .about, .contact { text-align:center; }
     .about p { font-size:1rem; line-height:1.5; }
     .contact p { font-weight:bold; margin-bottom:10px; }
     .contact form { display:flex; flex-direction:column; align-items:center; gap:15px; }
-    .contact input, .contact textarea { width:80%; max-width:400px; padding:10px; border-radius:10px; border:2px solid #ff69b4; font-size:1rem; }
-    .contact button { padding:10px 30px; border:none; border-radius:10px; background:#ff69b4; color:#fff; font-weight:bold; cursor:pointer; transition: background 0.3s; }
+    .contact input, .contact textarea {
+      width:80%; max-width:400px; padding:10px;
+      border-radius:10px; border:2px solid #ff69b4; font-size:1rem;
+    }
+    .contact button {
+      padding:10px 30px; border:none; border-radius:10px;
+      background:#ff69b4; color:#fff; font-weight:bold; cursor:pointer; transition: background 0.3s;
+    }
     .contact button:hover { background:#ff4081; }
 
     /* Footer */
     footer { background:#ffb6c1; padding:20px 10%; text-align:center; font-weight:bold; color:#fff; }
 
-    @media(max-width:768px){ .card iframe { width:100%; height:220px; } }
+    /* Modal Popup */
+    .modal {
+      display:none; position:fixed; z-index:1000; left:0; top:0;
+      width:100%; height:100%; background:rgba(0,0,0,0.8);
+      justify-content:center; align-items:center;
+    }
+    .modal-content {
+      position:relative; width:90%; max-width:900px;
+    }
+    .modal-content iframe {
+      width:100%; height:500px; border:none; border-radius:15px;
+    }
+    .close-btn {
+      position:absolute; top:-35px; right:-35px;
+      background:#ff4081; color:#fff; border:none; border-radius:50%;
+      width:40px; height:40px; font-size:20px; cursor:pointer;
+    }
+
+    @media(max-width:768px){
+      .card iframe { width:100%; height:220px; }
+      .modal-content iframe { height:300px; }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Sketchy Gogo TV</h1>
+  <div class="logo-container">
+    <img src="logo.png" alt="Sketchy Gogo TV Logo"> <!-- your PNG logo here -->
+    <h1>Sketchy Gogo TV</h1>
+  </div>
   <nav>
     <a onclick="showSection('home')">Home</a>
     <a onclick="showSection('shows')">Shows</a>
@@ -73,7 +116,7 @@
 <!-- Hero -->
 <section class="hero active" id="home">
   <h2>Welcome to Sketchy Gogo TV!</h2>
-  <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   <p>🎓 Coming Soon: Sketchy Gogo EDU — Fun Learning with Finley & Luna!</p>
   <a href="https://youtube.com/@sketchygogo?si=OJQcaT-tCr4a_iwl" target="_blank" class="visit-btn">Visit Our Channel</a>
 </section>
@@ -84,32 +127,32 @@
 
   <h3>🔥 Ngobi Hot Chilli Challenge</h3>
   <div class="carousel">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="card" onclick="openModal('https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=1')">
+      <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=0&mute=1"></iframe>
       <p>Part 1</p>
     </div>
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/hwXahPW-gko?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="card" onclick="openModal('https://www.youtube.com/embed/hwXahPW-gko?autoplay=1')">
+      <iframe src="https://www.youtube.com/embed/hwXahPW-gko?autoplay=0&mute=1"></iframe>
       <p>Part 2</p>
     </div>
   </div>
 
   <h3>🎓 Finley & Luna</h3>
   <div class="carousel">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/OOuLi2oh7RU?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="card" onclick="openModal('https://www.youtube.com/embed/OOuLi2oh7RU?autoplay=1')">
+      <iframe src="https://www.youtube.com/embed/OOuLi2oh7RU?autoplay=0&mute=1"></iframe>
       <p>Episode 1</p>
     </div>
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/NDFfeTf2jCs?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="card" onclick="openModal('https://www.youtube.com/embed/NDFfeTf2jCs?autoplay=1')">
+      <iframe src="https://www.youtube.com/embed/NDFfeTf2jCs?autoplay=0&mute=1"></iframe>
       <p>Short</p>
     </div>
   </div>
 
   <h3>😂 Funny Shorts</h3>
   <div class="carousel">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/HkmQPzeRo5U?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="card" onclick="openModal('https://www.youtube.com/embed/HkmQPzeRo5U?autoplay=1')">
+      <iframe src="https://www.youtube.com/embed/HkmQPzeRo5U?autoplay=0&mute=1"></iframe>
       <p>Funny Clip</p>
     </div>
   </div>
@@ -138,10 +181,28 @@
   © 2025 Sketchy Gogo TV | YouTube: Sketchy Gogo TV | Facebook: Sketchy Gogo
 </footer>
 
+<!-- Modal -->
+<div class="modal" id="videoModal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeModal()">✖</button>
+    <iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
 <script>
   function showSection(id){
     document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+  }
+
+  function openModal(videoUrl){
+    document.getElementById("videoModal").style.display = "flex";
+    document.getElementById("videoFrame").src = videoUrl;
+  }
+
+  function closeModal(){
+    document.getElementById("videoModal").style.display = "none";
+    document.getElementById("videoFrame").src = "";
   }
 </script>
 
