@@ -7,249 +7,143 @@
   <!-- Google Fonts: Baloo 2 -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* ---- Reset & Fonts ---- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Baloo 2', cursive;
-      background: #fef7f7;
-      color: #333;
-    }
-    a { text-decoration: none; color: inherit; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Baloo 2', cursive; background:#fef7f7; color:#333; }
+    a { text-decoration:none; color:inherit; cursor:pointer; }
 
-    /* ---- Header ---- */
+    /* Header */
     header {
       background: linear-gradient(90deg, #ffb6c1, #87cefa, #ffe066);
       padding: 20px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 4px solid #ff69b4;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom:4px solid #ff69b4; box-shadow:0 4px 6px rgba(0,0,0,0.1);
     }
-    header h1 {
-      font-size: 2rem;
-      color: #fff;
-      text-shadow: 2px 2px #ff69b4;
-    }
-    nav a {
-      margin-left: 20px;
-      font-weight: bold;
-      color: #fff;
-      transition: transform 0.2s;
-    }
-    nav a:hover { transform: scale(1.1); }
+    header h1 { font-size:2rem; color:#fff; text-shadow:2px 2px #ff69b4; }
+    nav a { margin-left:20px; font-weight:bold; color:#fff; transition: transform 0.2s; }
+    nav a:hover { transform:scale(1.1); }
 
-    /* ---- Hero / Featured Video ---- */
-    .hero {
-      text-align: center;
-      padding: 50px 10%;
-      background: #fff0f5;
-    }
-    .hero h2 {
-      font-size: 1.8rem;
-      color: #ff69b4;
-      margin-bottom: 20px;
-    }
-    .hero iframe {
-      width: 80%;
-      max-width: 600px;
-      height: 340px;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      margin-bottom: 15px;
-    }
-    .hero a {
-      display: inline-block;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #ff4081;
-    }
+    /* Sections */
+    section { padding:50px 10%; display:none; }
+    section.active { display:block; }
+    h2 { font-size:2rem; margin-bottom:20px; text-align:center; }
 
-    /* ---- Shows Section ---- */
-    .shows {
-      padding: 50px 10%;
-      background: #e0f7fa;
-    }
-    .shows h2 {
-      font-size: 2rem;
-      color: #00796b;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    .show-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 20px;
-      width: 260px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-    .card h3 {
-      font-size: 1.3rem;
-      color: #ff4081;
-      margin-bottom: 10px;
-    }
-    .card p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 10px;
-    }
-    .card iframe {
-      width: 220px;
-      height: 150px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
+    /* Hero */
+    .hero { background:#fff0f5; text-align:center; }
+    .hero h2 { color:#ff69b4; margin-bottom:20px; }
+    .hero iframe { width:80%; max-width:600px; height:340px; border:none; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.2); margin-bottom:15px; }
+    .hero .visit-btn { display:inline-block; margin-top:10px; padding:10px 20px; background:#ff4081; color:#fff; font-weight:bold; border-radius:10px; }
 
-    /* ---- About Section ---- */
-    .about {
-      padding: 50px 10%;
-      background: #fff0f5;
-      text-align: center;
-    }
-    .about h2 { color: #ff69b4; margin-bottom: 20px; font-size: 2rem; }
-    .about p { font-size: 1rem; line-height: 1.5; }
+    /* Carousel */
+    .carousel { display:flex; overflow-x:auto; gap:15px; scroll-behavior:smooth; padding-bottom:10px; }
+    .carousel::-webkit-scrollbar { height:8px; }
+    .carousel::-webkit-scrollbar-thumb { background:#ff69b4; border-radius:4px; }
+    .card { flex:0 0 auto; background:#fff; border-radius:15px; padding:15px; width:260px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+    .card h3 { color:#ff4081; margin-bottom:10px; }
+    .card p { color:#555; margin-bottom:10px; font-size:0.95rem; }
+    .card iframe { width:220px; height:150px; border-radius:10px; }
 
-    /* ---- Contact Section ---- */
-    .contact {
-      padding: 50px 10%;
-      background: #e0f7fa;
-      text-align: center;
-    }
-    .contact h2 { color: #00796b; margin-bottom: 20px; font-size: 2rem; }
-    .contact p { margin-bottom: 10px; font-weight: bold; }
-    .contact form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-    }
-    .contact input, .contact textarea {
-      width: 80%;
-      max-width: 400px;
-      padding: 10px;
-      border-radius: 10px;
-      border: 2px solid #ff69b4;
-      font-size: 1rem;
-    }
-    .contact button {
-      padding: 10px 30px;
-      border: none;
-      border-radius: 10px;
-      background: #ff69b4;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact button:hover { background: #ff4081; }
+    /* About & Contact */
+    .about, .contact { text-align:center; }
+    .about p { font-size:1rem; line-height:1.5; }
+    .contact p { font-weight:bold; margin-bottom:10px; }
+    .contact form { display:flex; flex-direction:column; align-items:center; gap:15px; }
+    .contact input, .contact textarea { width:80%; max-width:400px; padding:10px; border-radius:10px; border:2px solid #ff69b4; font-size:1rem; }
+    .contact button { padding:10px 30px; border:none; border-radius:10px; background:#ff69b4; color:#fff; font-weight:bold; cursor:pointer; transition: background 0.3s; }
+    .contact button:hover { background:#ff4081; }
 
-    /* ---- Footer ---- */
-    footer {
-      background: #ffb6c1;
-      padding: 20px 10%;
-      text-align: center;
-      font-weight: bold;
-      color: #fff;
-    }
+    /* Footer */
+    footer { background:#ffb6c1; padding:20px 10%; text-align:center; font-weight:bold; color:#fff; }
 
-    /* ---- Responsive ---- */
-    @media(max-width:768px){
-      .show-cards { flex-direction: column; align-items: center; }
-      .hero iframe, .card iframe { width: 100%; height: 220px; }
-    }
+    @media(max-width:768px){ .card iframe { width:100%; height:220px; } }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Sketchy Gogo TV</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#shows">Shows</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <h1>Sketchy Gogo TV</h1>
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('shows')">Shows</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h2>Welcome to Sketchy Gogo TV!</h2>
-    <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk" allowfullscreen></iframe>
-    <p>🎓 Coming Soon: Sketchy Gogo EDU — Fun Learning with Finley & Luna!</p>
-    <p><a href="https://youtube.com/@sketchygogo?si=OJQcaT-tCr4a_iwl" target="_blank">Visit our YouTube Channel</a></p>
-  </section>
+<!-- Hero -->
+<section class="hero active" id="home">
+  <h2>Welcome to Sketchy Gogo TV!</h2>
+  <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <p>🎓 Coming Soon: Sketchy Gogo EDU — Fun Learning with Finley & Luna!</p>
+  <a href="https://youtube.com/@sketchygogo?si=OJQcaT-tCr4a_iwl" target="_blank" class="visit-btn">Visit Our Channel</a>
+</section>
 
-  <!-- Shows Section -->
-  <section class="shows" id="shows">
-    <h2>Our Shows</h2>
-    <div class="show-cards">
+<!-- Shows -->
+<section id="shows">
+  <h2>Our Shows</h2>
 
-      <!-- NGobi Hot Chilli Challenge -->
-      <div class="card">
-        <h3>🔥 Ngobi Hot Chilli Challenge</h3>
-        <p>Parts 1 & 2 of wild food endurance madness!</p>
-        <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/hwXahPW-gko" allowfullscreen></iframe>
-      </div>
-
-      <!-- Finley & Luna -->
-      <div class="card">
-        <h3>🎓 Finley & Luna</h3>
-        <p>Kids-friendly educational adventures!</p>
-        <iframe src="https://www.youtube.com/embed/OOuLi2oh7RU" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/NDFfeTf2jCs" allowfullscreen></iframe>
-      </div>
-
-      <!-- Funny Shorts -->
-      <div class="card">
-        <h3>😂 Funny Shorts</h3>
-        <p>Moments we turned into hilarious shorts.</p>
-        <iframe src="https://www.youtube.com/embed/HkmQPzeRo5U" allowfullscreen></iframe>
-      </div>
-
+  <h3>🔥 Ngobi Hot Chilli Challenge</h3>
+  <div class="carousel">
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/cFOwjOBuvGk?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>Part 1</p>
     </div>
-  </section>
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/hwXahPW-gko?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>Part 2</p>
+    </div>
+  </div>
 
-  <!-- About Section -->
-  <section class="about" id="about">
-    <h2>About Sketchy Gogo TV</h2>
-    <p>
-      Born in South Africa and powered by pure chaos, Sketchy Gogo TV is your home for laughter, local flavor, and now educational adventures. 
-      From chilli challenges to classroom wisdom, and now <strong>Finley & Luna’s ocean quests</strong>, we’re showing that learning can be as fun as a hot chilli challenge!
-    </p>
-  </section>
+  <h3>🎓 Finley & Luna</h3>
+  <div class="carousel">
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/OOuLi2oh7RU?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>Episode 1</p>
+    </div>
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/NDFfeTf2jCs?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>Short</p>
+    </div>
+  </div>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact / Join Us</h2>
-    <p>Email: <a href="mailto:adventuretoddlers@gmail.com">adventuretoddlers@gmail.com</a></p>
-    <p>Phone: 064 836 2134</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+  <h3>😂 Funny Shorts</h3>
+  <div class="carousel">
+    <div class="card">
+      <iframe src="https://www.youtube.com/embed/HkmQPzeRo5U?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>Funny Clip</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Sketchy Gogo TV | YouTube: Sketchy Gogo TV | Facebook: Sketchy Gogo
-  </footer>
+<!-- About -->
+<section class="about" id="about">
+  <h2>About Sketchy Gogo TV</h2>
+  <p>Born in South Africa and powered by pure chaos, Sketchy Gogo TV is your home for laughter, local flavor, and now educational adventures. From chilli challenges to classroom wisdom, and now <strong>Finley & Luna’s ocean quests</strong>, we’re showing that learning can be as fun as a hot chilli challenge!</p>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <h2>Contact / Join Us</h2>
+  <p>Email: <a href="mailto:adventuretoddlers@gmail.com">adventuretoddlers@gmail.com</a></p>
+  <p>Phone: 064 836 2134</p>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  © 2025 Sketchy Gogo TV | YouTube: Sketchy Gogo TV | Facebook: Sketchy Gogo
+</footer>
+
+<script>
+  function showSection(id){
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
