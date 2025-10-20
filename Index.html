@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sketchy Gogo TV</title>
+  <style>
+    /* ---- Reset & Fonts ---- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #fef7f7;
+      color: #333;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ---- Header ---- */
+    header {
+      background: linear-gradient(90deg, #ffb6c1, #87cefa, #ffe066);
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #ff69b4;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header h1 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 2px #ff69b4;
+    }
+    nav a {
+      margin-left: 20px;
+      font-weight: bold;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+    nav a:hover { transform: scale(1.1); }
+
+    /* ---- Hero / Featured Video ---- */
+    .hero {
+      text-align: center;
+      padding: 50px 10%;
+      background: #fff0f5;
+    }
+    .hero h2 {
+      font-size: 1.8rem;
+      color: #ff69b4;
+      margin-bottom: 20px;
+    }
+    .hero iframe {
+      width: 80%;
+      max-width: 600px;
+      height: 340px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* ---- Shows Section ---- */
+    .shows {
+      padding: 50px 10%;
+      background: #e0f7fa;
+    }
+    .shows h2 {
+      font-size: 2rem;
+      color: #00796b;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .show-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      color: #ff4081;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ---- About Section ---- */
+    .about {
+      padding: 50px 10%;
+      background: #fff0f5;
+      text-align: center;
+    }
+    .about h2 { color: #ff69b4; margin-bottom: 20px; font-size: 2rem; }
+    .about p { font-size: 1rem; line-height: 1.5; }
+
+    /* ---- Contact Section ---- */
+    .contact {
+      padding: 50px 10%;
+      background: #e0f7fa;
+      text-align: center;
+    }
+    .contact h2 { color: #00796b; margin-bottom: 20px; font-size: 2rem; }
+    .contact p { margin-bottom: 10px; font-weight: bold; }
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .contact input, .contact textarea {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #ff69b4;
+      font-size: 1rem;
+    }
+    .contact button {
+      padding: 10px 30px;
+      border: none;
+      border-radius: 10px;
+      background: #ff69b4;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact button:hover { background: #ff4081; }
+
+    /* ---- Footer ---- */
+    footer {
+      background: #ffb6c1;
+      padding: 20px 10%;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    /* ---- Responsive ---- */
+    @media(max-width:768px){
+      .show-cards { flex-direction: column; align-items: center; }
+      .hero iframe { width: 100%; height: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Sketchy Gogo TV</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#shows">Shows</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h2>Welcome to Sketchy Gogo TV!</h2>
+    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+    <p>🎓 Coming Soon: Sketchy Gogo EDU — Fun Learning with Finley & Luna!</p>
+  </section>
+
+  <!-- Shows Section -->
+  <section class="shows" id="shows">
+    <h2>Our Shows</h2>
+    <div class="show-cards">
+      <div class="card">
+        <h3>Hot Challenges</h3>
+        <p>Wild food & endurance challenges like Ngobi Hot Chilli Challenge.</p>
+      </div>
+      <div class="card">
+        <h3>Comedy Shorts</h3>
+        <p>Funny clips like Finley & Looner, Mahomet Shorts.</p>
+      </div>
+      <div class="card">
+        <h3>Sketchy Gogo Moments</h3>
+        <p>Parody skits & interviews — “Gogo Reacts” chaos.</p>
+      </div>
+      <div class="card">
+        <h3>Sketchy Gogo EDU</h3>
+        <p>Kids-friendly educational adventures with <strong>Finley & Luna</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Sketchy Gogo TV</h2>
+    <p>
+      Born in South Africa and powered by pure chaos, Sketchy Gogo TV is your home for laughter, local flavor, and now educational adventures. 
+      From chilli challenges to classroom wisdom, and now <strong>Finley & Luna’s ocean quests</strong>, we’re showing that learning can be as fun as a hot chilli challenge!
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact / Join Us</h2>
+    <p>Email: <a href="mailto:adventuretoddlers@gmail.com">adventuretoddlers@gmail.com</a></p>
+    <p>Phone: 064 836 2134</p>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Sketchy Gogo TV | YouTube: Sketchy Gogo TV | Facebook: Sketchy Gogo
+  </footer>
+
+</body>
+</html>
